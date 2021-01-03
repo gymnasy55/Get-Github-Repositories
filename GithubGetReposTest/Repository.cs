@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace GithubGetReposTest
 {
-    public class Repositories
+    public class Repository
     {
         [JsonProperty("name")] 
         public string Name { get; private set; }
@@ -13,7 +13,7 @@ namespace GithubGetReposTest
         [JsonProperty("html_url")]
         public string Url { get; private set; }
 
-        public static async Task<List<Repositories>> GetRepositories(string url)
+        public static async Task<List<Repository>> GetRepositories(string url)
         {
             string responseBody;
 
@@ -26,7 +26,7 @@ namespace GithubGetReposTest
                 responseBody = await response.Content.ReadAsStringAsync();
             }
 
-            var kek = JsonConvert.DeserializeObject<List<Repositories>>(responseBody);
+            var kek = JsonConvert.DeserializeObject<List<Repository>>(responseBody);
             return kek;
         }
     }
