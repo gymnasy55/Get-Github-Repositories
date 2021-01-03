@@ -21,7 +21,7 @@ namespace GithubGetReposTest
             {
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.UserAgent.TryParseAdd("request");
-                using var response = client.GetAsync("https://api.github.com/users/gymnasy55/repos?sort=updated").Result;
+                using var response = client.GetAsync(url).Result;
                 response.EnsureSuccessStatusCode();
                 responseBody = await response.Content.ReadAsStringAsync();
             }
